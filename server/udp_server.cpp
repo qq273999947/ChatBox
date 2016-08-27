@@ -1,4 +1,5 @@
 #include"udp_server.h"
+#define G_BLOCK_SIZE 1024
 
 static void print_log(std::string log)
 {
@@ -69,7 +70,7 @@ int udp_server::recv_msg(std::string &_out_msg)
     struct sockaddr_in client;
     socklen_t len = sizeof(client);
     bzero(&client,len);
-    ssize_t size = recvfrom(this->sock,buf,sizeof(buf));
+    ssize_t size = recvfrom(this->sock,buf,sizeof(buf),0,(struct sockaddr*)&client,&len);
     if(size == -1){
         print_log("recv_msg failed!");
         return 1;
@@ -81,7 +82,7 @@ int udp_server::recv_msg(std::string &_out_msg)
     return size;
 }
 
-int udp_server::send_msg(const std:string &_in_msg,\
+int udp_server::send_msg(const std::string &_in_msg,\
                         const struct sockaddr_in &client,\
                         socklen_t len)
 {

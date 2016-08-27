@@ -9,7 +9,6 @@
 #include<arpa/inet.h>
 #include<netinet/in.h>
 #include<stdio.h>
-#include "comm.h"
 
 class udp_client
 {

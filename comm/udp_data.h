@@ -18,9 +18,7 @@ class udp_data{
         {}
         void set_type(const std::string &s)
                     :type(s)
-        {}
-
-        
+        {}      
         void get_nick_name(const std::string &s)
         {
             s = nick_name;

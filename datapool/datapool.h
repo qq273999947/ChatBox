@@ -1,14 +1,32 @@
 #pragma once
 
-#include<iostream>
+#ifndef _DATA_POOL_
+#define _DATA_POOL_
 
-class data_pool{
+#include <iostream>
+#include <semaphore.h>
+#include <string.h>
+#include <stdlib.h>
+#include <vector>
+
+using namespace std;
+
+#define CAPACITY 1024
+
+class data_pool
+{
+    public:
+        data_pool();
+        void get_msg(string &_out_msg);
+        void put_msg(const string &_in_msg);
+        ~data_pool();
     private:
-    std::vector<std::string> pool;
-    int capacity;
-    public:  
-    data_pool();
-    get_data();
-    put_data();
-    ~data_pool();
+        sem_t put_sem;
+        sem_t get_sem;
+        vector<string> pool;
+        int size;
+        int start;
+        int end;
+
 };
+#endif

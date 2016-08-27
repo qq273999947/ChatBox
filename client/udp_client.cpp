@@ -1,4 +1,5 @@
 #include "udp_client.h"
+#define G_BLOCK_SIZE 1024
 
 udp_client::udp_client(std::string _remote_ip ,unsigned short _port)
     :remote_ip(_remote_ip)
